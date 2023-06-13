@@ -40,25 +40,6 @@ const App = () => {
     getData();
   }, []);
 
-  const onDelete = (id) => {
-    const indexOf = simpsons.findIndex((char) => {
-      return char.id === id;
-    });
-    const _simpsons = [...simpsons];
-    _simpsons.splice(indexOf, 1);
-    setSimpsons(_simpsons);
-  };
-
-  const toggleLiked = (id) => {
-    const _simpsons = [...simpsons];
-    const indexOf = _simpsons.findIndex((item) => {
-      return item.id === id;
-    });
-
-    _simpsons[indexOf].liked = !_simpsons[indexOf].liked;
-    setSimpsons(_simpsons);
-  };
-
   const onSearch = (e) => {
     dispatch(setSearch(e.target.value));
   };
@@ -116,18 +97,12 @@ const App = () => {
     if (char.liked) total++;
   });
 
-  console.log(simpsons);
-  console.log(search);
   return (
     <>
       <h1>Total no of liked chars #{total}</h1>
       <Inputs simpsons={simpsons} onSearch={onSearch} onSort={onSort} />
 
-      <Simpsons
-        simpsons={getFilteredList()}
-        onDelete={onDelete}
-        toggleLiked={toggleLiked}
-      />
+      <Simpsons simpsons={getFilteredList()} />
     </>
   );
 };

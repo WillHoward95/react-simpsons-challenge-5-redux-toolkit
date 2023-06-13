@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { toggleLiked } from "../features/counter/counterSlice";
+import { useDispatch } from "react-redux";
 
 const Name = (props) => {
-  const { character, toggleLiked, id, liked } = props;
+  const dispatch = useDispatch();
 
-  //   let [liked, setLiked] = useState(false);
+  const { character, id, liked } = props;
 
   return (
     <>
       <div>
         <h1>{character}</h1>
-        <button onClick={() => toggleLiked(id)}>
+        <button onClick={() => dispatch(toggleLiked(id))}>
           {liked ? "Unlike" : "Like"}
         </button>
       </div>
