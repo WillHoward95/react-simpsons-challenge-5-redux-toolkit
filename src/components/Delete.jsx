@@ -1,4 +1,4 @@
-import { deleteItem } from "../features/counter/counterSlice";
+import { deleteItem } from "../features/simpsons/simpsonsSlice";
 import { useDispatch } from "react-redux";
 
 const Delete = (props) => {

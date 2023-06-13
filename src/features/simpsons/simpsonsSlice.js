@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {};
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const simpsonsSlice = createSlice({
+  name: "simpsons",
   initialState,
   reducers: {
     setSimpsons: (state, action) => {
@@ -32,10 +32,10 @@ export const counterSlice = createSlice({
 });
 
 export const { toggleLiked, deleteItem, setSort, setSearch, setSimpsons } =
-  counterSlice.actions;
+  simpsonsSlice.actions;
 
-export const selectSimpsons = (state) => state.counter.simpsons;
-export const selectSearch = (state) => state.counter.search;
-export const selectSort = (state) => state.counter.sort;
+export const selectSimpsons = (state) => state.simpsons.simpsons;
+export const selectSearch = (state) => state.simpsons.search;
+export const selectSort = (state) => state.simpsons.sort;
 
-export default counterSlice.reducer;
+export default simpsonsSlice.reducer;

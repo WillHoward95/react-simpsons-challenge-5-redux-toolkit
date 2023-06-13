@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Inputs from "./components/Inputs";
 import Simpsons from "./components/Simpsons";
@@ -10,7 +10,7 @@ import {
   selectSearch,
   setSort,
   selectSort,
-} from "./features/counter/counterSlice";
+} from "./features/simpsons/simpsonsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const App = () => {

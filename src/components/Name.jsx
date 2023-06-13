@@ -1,4 +1,4 @@
-import { toggleLiked } from "../features/counter/counterSlice";
+import { toggleLiked } from "../features/simpsons/simpsonsSlice";
 import { useDispatch } from "react-redux";
 
 const Name = (props) => {
