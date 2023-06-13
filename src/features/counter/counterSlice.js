@@ -1,24 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  value: 0,
-};
+const initialState = {};
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    setSimpsons: (state, action) => {
+      state.simpsons = action.payload;
     },
-    decrement: (state) => {
-      state.value -= 1;
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    setSort: (state, action) => {
+      state.sort = action.payload;
     },
   },
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { setSort, setSearch, setSimpsons } = counterSlice.actions;
 
-export const selectCount = (state) => state.counter.value;
+export const selectSimpsons = (state) => state.counter.simpsons;
+export const selectSearch = (state) => state.counter.search;
+export const selectSort = (state) => state.counter.sort;
 
 export default counterSlice.reducer;
