@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import Inputs from "./components/Inputs";
 import Simpsons from "./components/Simpsons";
+import Navbar from "./components/Navbar";
 import "./App.css";
 import {
   setSimpsons,
@@ -23,14 +24,20 @@ const App = () => {
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `https://thesimpsonsquoteapi.glitch.me/quotes?count=50`
+        `https://thesimpsonsquoteapi.glitch.me/quotes?count=25`
       );
 
       data.forEach((element, index) => {
         element.id = index + Math.random();
       });
 
-      dispatch(setSimpsons(data));
+      const filter = data.filter((item) => {
+        if (!item.character.toLowerCase().includes("apu")) {
+          return true;
+        }
+      });
+
+      dispatch(setSimpsons(filter));
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +60,6 @@ const App = () => {
 
     if (search) {
       filteredList = simpsons.filter((item) => {
-        console.log(item.quote, item.character, search);
         if (
           item.quote.toLowerCase().includes(search.toLowerCase()) ||
           item.character.toLowerCase().includes(search.toLowerCase())
@@ -99,8 +105,13 @@ const App = () => {
 
   return (
     <>
-      <h1>Total no of liked chars #{total}</h1>
-      <Inputs simpsons={simpsons} onSearch={onSearch} onSort={onSort} />
+      <Navbar
+        total={total}
+        simpsons={simpsons}
+        onSearch={onSearch}
+        onSort={onSort}
+      />
+      {/* <h1>Total no of liked chars #{total}</h1> */}
 
       <Simpsons simpsons={getFilteredList()} />
     </>

@@ -7,14 +7,12 @@ const Name = (props) => {
   const { character, id, liked } = props;
 
   return (
-    <>
-      <div>
-        <h1>{character}</h1>
-        <button onClick={() => dispatch(toggleLiked(id))}>
-          {liked ? "Unlike" : "Like"}
-        </button>
-      </div>
-    </>
+    <div className="characterName">
+      <h1>{character}</h1>
+      {/* <button onClick={() => dispatch(toggleLiked(id))}>
+          {liked ? "Unfavourite" : "Favourite"}
+        </button> */}
+    </div>
   );
 };
 

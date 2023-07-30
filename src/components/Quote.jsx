@@ -1,6 +1,10 @@
 const Quote = (props) => {
   const { quote } = props;
-  return <p>{quote}</p>;
+  return (
+    <div className="characterQuote">
+      <p>{quote}</p>
+    </div>
+  );
 };
 
 export default Quote;
